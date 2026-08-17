@@ -1,3 +1,33 @@
 spring:
   application:
     name: OrderService
+  datasource:
+    url: jdbc:mysql://localhost:3306/order_db?useSSL=false&serverTimezone=UTC
+    username: root
+    password: Pal@7771
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8081
+
+inventory-service:
+  url: http://localhost:8082
+
+product-service:
+  url: http://localhost:8083
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
